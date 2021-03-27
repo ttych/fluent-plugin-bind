@@ -1,13 +1,15 @@
-require "bundler"
-Bundler::GemHelper.install_tasks
+# frozen_string_literal: true
 
-require "rake/testtask"
+require 'bundler'
+require 'bundler/gem_tasks'
+
+require 'rake/testtask'
 
 Rake::TestTask.new(:test) do |t|
-  t.libs.push("lib", "test")
-  t.test_files = FileList["test/**/test_*.rb"]
-  t.verbose = true
-  t.warning = true
+  t.libs.push('lib', 'test')
+  t.test_files = FileList['test/**/test_*.rb', 'test/**/*_test.rb',]
+  t.verbose = false
+  t.warning = false
 end
 
 task default: [:test]
