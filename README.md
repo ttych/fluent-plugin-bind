@@ -1,43 +1,36 @@
 # fluent-plugin-bind
 
-[Fluentd](https://fluentd.org/) parser plugin to do something.
+## Parser
 
-TODO: write description for you plugin.
+### named_queries
 
-## Installation
+**Parser for Bind/Named queries log format**.
 
-### RubyGems
+Example of fluentd.conf:
+```
+<source>
+  @type tail
+  path /service/named/log/query.log
+  pos_file query.pos
+  tag named_query
+  read_from_head true
+  <parse>
+    @type named_queries
+  </parse>
+</source>
+
+<match named_query>
+  @type stdout
+</match>
 
 ```
-$ gem install fluent-plugin-bind
-```
-
-### Bundler
-
-Add following line to your Gemfile:
-
-```ruby
-gem "fluent-plugin-bind"
-```
-
-And then execute:
-
-```
-$ bundle
-```
-
-## Configuration
-
-You can generate configuration template:
-
-```
-$ fluent-plugin-config-format parser bind
-```
-
-You can copy and paste generated documents here.
 
 ## Copyright
 
 * Copyright(c) 2021- Thomas Tych
 * License
   * Apache License, Version 2.0
+
+## References
+
+- [Fluentd](https://fluentd.org/)
