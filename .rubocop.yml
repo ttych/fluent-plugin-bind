@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*.rb'
